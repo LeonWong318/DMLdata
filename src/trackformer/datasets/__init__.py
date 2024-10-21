@@ -38,6 +38,8 @@ def build_dataset(split: str, args: Namespace) -> Dataset:
         dataset = build_crowdhuman(split, args)
     elif args.dataset == 'mot_crowdhuman':
         dataset = build_mot_crowdhuman(split, args)
+    elif args.dataset == 'HT21':
+        dataset = build_mot(split, args)
     elif args.dataset == 'mot_coco_person':
         dataset = build_mot_coco_person(split, args)
     elif args.dataset == 'coco_panoptic':
