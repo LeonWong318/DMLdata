@@ -25,7 +25,7 @@
        ```    
     
 
-3. Download and unpack pretrained TrackFormer model files in the `models` directory:
+3. Download and unpack pretrained TrackFormer model files which is the starting point model in this project in the `models` directory:
 
     ```
     wget https://vision.in.tum.de/webshare/u/meinhard/trackformer_models_v1.zip
