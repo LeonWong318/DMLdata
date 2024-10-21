@@ -18,43 +18,32 @@ We refer to our [docs/INSTALL.md](docs/INSTALL.md) for detailed installation ins
 
 We refer to our [docs/TRAIN.md](docs/TRAIN.md) for detailed training instructions.
 
-## Evaluate TrackFormer
+## Evaluation
 
 In order to evaluate TrackFormer on a multi-object tracking dataset, we provide the `src/track.py` script which supports several datasets and splits interchangle via the `dataset_name` argument (See `src/datasets/tracking/factory.py` for an overview of all datasets.) The default tracking configuration is specified in `cfgs/track.yaml`. To facilitate the reproducibility of our results, we provide evaluation metrics for both the train and test set.
 
 ### HT21
 
-#### Private detections
+
 
 ```
-python src/track.py with reid
-```
-
-<center>
-
-| MOT17     | MOTA         | IDF1           |       MT     |     ML     |     FP       |     FN              |  ID SW.      |
-|  :---:    | :---:        |     :---:      |    :---:     | :---:      |    :---:     |   :---:             |  :---:       |
-| **Train** |     74.2     |     71.7       |     849      | 177        |      7431    |      78057          |  1449        |
-| **Test**  |     74.1     |     68.0       |    1113      | 246        |     34602    |     108777          |  2829        |
-
-</center>
-
-#### Public detections (DPM, FRCNN, SDP)
-
-```
-python src/track.py with \
+python3 src/track.py with \
+    dataset_name=HT21-14 \
+    data_root_dir=data \
+    output_dir=data/HT21_14_after_TL \
+    write_images=pretty \
     reid \
-    tracker_cfg.public_detections=min_iou_0_5 \
-    obj_detect_checkpoint_file=models/mot17_deformable_multi_frame/checkpoint_epoch_50.pth
+    obj_detect_checkpoint_file=models/custom_dataset_deformable/checkpoint_epoch_10.pth
 ```
 
 <center>
 
-| MOT17     | MOTA         | IDF1           |       MT     |     ML     |     FP       |     FN              |  ID SW.      |
-|  :---:    | :---:        |     :---:      |    :---:     | :---:      |    :---:     |   :---:             |  :---:       |
-| **Train** |     64.6     |     63.7       |    621       | 675        |     4827     |     111958          |  2556        |
-| **Test**  |     62.3     |     57.6       |    688       | 638        |     16591    |     192123          |  4018        |
+| HT21-01     | MOTA         | MOTP           |       IDF1     |     HOTA     |     MTR       |     MLR             |  
+|  :---:    | :---:        |     :---:      |    :---:     | :---:      |    :---:     |   :---:             |  
+| **Train** |     66.77     |     71.109       |     67.692      | 49.46        |      45.51    |      16.456          |  
 
 </center>
+
+
 
 
