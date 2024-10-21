@@ -1,0 +1,16 @@
+dataset: HT21
+
+train_split: HT21_train_1_coco
+val_split: HT21_val_1_coco
+
+mot_path_train: data/HT21
+mot_path_val: data/HT21
+
+# mot_path_train: data/HT21/HT21_train_1_coco
+# mot_path_val: data/HT21/HT21_train_cross_val_frame_0_5_to_1_0_coco
+
+resume: models/mot20_crowdhuman_deformable_multi_frame/checkpoint_epoch_50.pth
+
+batch_size: 1
+epochs: 50
+lr_drop: 10

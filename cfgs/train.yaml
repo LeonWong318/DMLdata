@@ -6,7 +6,7 @@ lr_linear_proj_mult: 0.1
 lr_track: 0.0001
 overwrite_lrs: false
 overwrite_lr_scheduler: false
-batch_size: 2
+batch_size: 1
 weight_decay: 0.0001
 epochs: 50
 lr_drop: 40
@@ -89,13 +89,16 @@ focal_alpha: 0.25
 focal_gamma: 2
 # Dataset
 dataset: coco
-train_split: train
-val_split: val
-coco_path: data/coco_2017
+# train_split: train
+# val_split: val
+train_split: HT21_train_coco
+val_split: HT21_val_1_coco
+coco_path: data/HT21
 coco_panoptic_path: null
-mot_path_train: data/MOT17
-mot_path_val: data/MOT17
-crowdhuman_path: data/CrowdHuman
+mot_path_train: data/HT21
+mot_path_val: data/HT21
+crowdhuman_path: data/HT21
+#crowdhuman_path: null
 # allows for joint training of mot and crowdhuman/coco_person with the `mot_crowdhuman`/`mot_coco_person` dataset
 crowdhuman_train_split: null
 coco_person_train_split: null
