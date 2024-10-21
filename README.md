@@ -44,6 +44,12 @@ python3 src/track.py with \
 
 </center>
 
+## Visualization
 
+You may use the following code to generate the final video based on running the evaluation part.
+
+```
+ffmpeg -r 25 -f image2 -i /root/trackformer/data/HT21_14_after_TL/HT21-14/HT21-14-None/%06d.jpg -vcodec libx264 -crf 25 -pix_fmt yuv420p HT21_14_after_TL.mp4
+```
 
 
