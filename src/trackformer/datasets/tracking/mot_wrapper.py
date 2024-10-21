@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 from .mot17_sequence import MOT17Sequence
 from .mot20_sequence import MOT20Sequence
 from .mots20_sequence import MOTS20Sequence
-
+from .ht21_sequence import HT21Sequence
 
 class MOT17Wrapper(Dataset):
     """A Wrapper for the MOT_Sequence class to return multiple sequences."""
@@ -88,6 +88,43 @@ class MOT20Wrapper(Dataset):
 
     def __getitem__(self, idx: int):
         return self._data[idx]
+    
+
+class HT21Wrapper(Dataset):
+    """A Wrapper for the MOT_Sequence class to return multiple sequences."""
+
+    def __init__(self, split: str, **kwargs) -> None:
+        """Initliazes all subset of the dataset.
+
+        Keyword arguments:
+        split -- the split of the dataset to use
+        kwargs -- kwargs for the MOT20Sequence dataset
+        """
+        train_sequences = ['HT21-01', 'HT21-02', 'HT21-03', 'HT21-04',]
+        test_sequences = ['HT21-11', 'HT21-12', 'HT21-13', 'HT21-14', 'HT21-15']
+
+        if split == "TRAIN":
+            sequences = train_sequences
+        elif split == "TEST":
+            sequences = test_sequences
+        elif split == "ALL":
+            sequences = train_sequences + test_sequences
+            sequences = sorted(sequences)
+        elif f"HT21-{split}" in train_sequences + test_sequences:
+            sequences = [f"HT21-{split}"]
+        else:
+            raise NotImplementedError("HT21 split not available.")
+
+        self._data = []
+        for seq in sequences:
+            self._data.append(HT21Sequence(seq_name=seq, dets=None, **kwargs))
+
+    def __len__(self) -> int:
+        return len(self._data)
+
+    def __getitem__(self, idx: int):
+        return self._data[idx]
+    
 
 
 class MOTS20Wrapper(MOT17Wrapper):
