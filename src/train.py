@@ -33,7 +33,7 @@ ex.add_named_config('mot20_crowdhuman', 'cfgs/train_mot20_crowdhuman.yaml')
 ex.add_named_config('coco_person_masks', 'cfgs/train_coco_person_masks.yaml')
 ex.add_named_config('full_res', 'cfgs/train_full_res.yaml')
 ex.add_named_config('multi_frame', 'cfgs/train_multi_frame.yaml')
-
+ex.add_named_config('ht21', 'cfgs/train_ht21.yaml')
 
 def train(args: Namespace) -> None:
     print(args)
@@ -50,8 +50,11 @@ def train(args: Namespace) -> None:
     if args.tracking:
         # assert args.batch_size == 1
 
+        # if args.tracking_eval:
+           # assert 'mot' in args.dataset
+
         if args.tracking_eval:
-            assert 'mot' in args.dataset
+            assert args.dataset in ['mot', 'HT21'], f"Unsupported dataset: {args.dataset}"
 
     output_dir = Path(args.output_dir)
     if args.output_dir:

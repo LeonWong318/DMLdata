@@ -95,6 +95,19 @@ def main(seed, dataset_name, obj_detect_checkpoint_file, tracker_cfg,
     if hasattr(obj_detector, 'tracking'):
         obj_detector.tracking()
 
+    ################################################################
+    # 新增：冻结backbone的权重
+    for param in obj_detector.backbone.parameters():
+        param.requires_grad = False
+
+    # 保持ReID模块和检测头可训练
+    #for param in obj_detector.reid.parameters():
+        #param.requires_grad = True
+
+    #for param in obj_detector.head.parameters():  # 根据实际的检测头名称修改
+        #param.requires_grad = True
+    ################################################################
+
     track_logger = None
     if verbose:
         track_logger = _log.info
