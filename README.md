@@ -1,6 +1,6 @@
 # Multi-Object Tracking in Large-Scale Object Scenarios Using TrackFormer
 
-This repository provides the large-scale object scenarios implementation of the deep machine learning course project (find the report) which borrows a lot of codes from [TrackFormer](https://github.com/timmeinhardt/trackformer)
+This repository provides the large-scale object scenarios implementation in the deep machine learning course project (find the report) which could be considered as a specific implementation of  [TrackFormer](https://github.com/timmeinhardt/trackformer). If you want to know more about TrackFormer we highly encourage you to find that repo for more details as well as a more general description.
 
 
 
